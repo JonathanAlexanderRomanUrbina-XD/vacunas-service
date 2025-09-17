@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface HistorialVacunaRepository extends JpaRepository<HistorialVacuna, Long> {
 
-    @Query("SELECT h FROM HistorialVacuna h WHERE h.mascotaId IN (" +
-            "SELECT m.id FROM Mascota m WHERE m.fk_dueno = :usuarioId)")
+    @Query("SELECT h FROM HistorialVacuna h WHERE h.mascota.dueno.id = :usuarioId")
     List<HistorialVacuna> findByUsuarioId(Long usuarioId);
 }

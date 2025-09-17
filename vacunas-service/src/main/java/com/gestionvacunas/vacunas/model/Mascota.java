@@ -5,13 +5,15 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Vacuna {
+public class Mascota {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
     private String nombre;
 
-    private String descripcion; // opcional
+    @ManyToOne
+    @JoinColumn(name = "fk_dueno")
+    private Usuario dueno;  // relación con Usuario
 }

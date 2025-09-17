@@ -14,8 +14,14 @@ public class HistorialVacuna {
     @ManyToOne
     private Vacuna vacuna;
 
-    private Long mascotaId;
-    private Long veterinarioId;
+    @ManyToOne
+    @JoinColumn(name = "mascota_id")
+    private Mascota mascota;   // 👈 en lugar de solo Long mascotaId
+
+    @ManyToOne
+    @JoinColumn(name = "veterinario_id")
+    private Usuario veterinario;
+
     private LocalDate fechaAplicacion;
-    private String observaciones; // opcional
+    private String observaciones;
 }
